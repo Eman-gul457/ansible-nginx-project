@@ -6,7 +6,6 @@ This project demonstrates infrastructure automation by deploying a web server au
 ![Ansible](https://img.shields.io/badge/Ansible-2.15+-black?logo=ansible)
 ![Nginx](https://img.shields.io/badge/Nginx-1.18+-green?logo=nginx)
 ![YAML](https://img.shields.io/badge/YAML-Configuration-blue)
-![License](https://img.shields.io/badge/License-MIT-yellowgreen)
 ![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey)
 
 ---
@@ -32,6 +31,12 @@ This project demonstrates infrastructure automation by deploying a web server au
 | 💡 **Markdown** | Documentation |
 
 ---
+Demo Note:
+This project is demonstrated on a local machine using Ansible’s localhost connection.
+It simulates real server automation by running all tasks locally.
+In an actual production setup, you can easily replace localhost with your real server IPs
+inside the inventory.ini file to manage remote machines.
 
-## 📂 Project Structure
+This approach is ideal for learning, testing, and showcasing Ansible automation workflows
+without needing cloud or external servers.
 
