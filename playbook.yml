@@ -1,0 +1,45 @@
+---
+- name: Install and configure Nginx on all webservers (simulated)
+  hosts: webservers
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Update apt cache (Debian family)
+      apt:
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Ensure nginx is started and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Deploy demo index.html
+      copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Wait for port 80 to be open
+      wait_for:
+        port: 80
+        timeout: 15
+
+    - name: Check nginx status
+      command: systemctl is-active nginx
+      register: nginx_status
+      changed_when: false
+
+    - name: Debug nginx status
+      debug:
+        msg: "nginx is {{ nginx_status.stdout }} on {{ inventory_hostname }}"
