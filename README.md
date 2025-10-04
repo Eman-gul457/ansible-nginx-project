@@ -40,3 +40,17 @@ inside the inventory.ini file to manage remote machines.
 This approach is ideal for learning, testing, and showcasing Ansible automation workflows
 without needing cloud or external servers.
 
+---
+
+## ⚡ How to Clone & Run
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/ansible-nginx-project.git
+
+# Navigate into the project folder
+cd ansible-nginx-project
+
+# Run the Ansible playbook
+ansible-playbook -i inventory.ini playbook.yml --ask-become-pass
+
